@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+Théo Cachet et Tomy Reguig
+15/12/16
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Quelques exemples de galeries</title>
+<style type="text/css">
+body {
+    background-color: #f1f6df;
+}
+
+pre {
+    background-color: #E0FFF0;
+    border: 1px solid #A0C0A0;
+    padding: 10px;
+}
+
+h1 {
+        text-align: center;
+    	color: #003000;
+	background-color: #c8dd80;
+	border: 1px solid #98c012;
+        margin: 15px;
+        padding: 10px;
+        clear: both;
+}
+
+h2 {
+        border-bottom: 1px solid #004000;
+}
+
+.spacer {
+  clear: both;
+}
+
+a:hover {
+        background-color: #D0E0FF;
+}
+
+.photo {
+    width: 250px;
+    float: left;
+    margin-right: 20px;
+}
+
+.flags {
+        float: right;
+        margin: 10px;
+}
+
+.bottom {
+        margin-top: 20px;
+        padding-top: 3px;
+        border-top: 1px black solid;
+        clear: both;
+}
+
+
+.address {
+        float: right;
+}
+
+
+.postaddress {
+        margin: 20px;
+        padding: 10px;
+        border: 1px #60D060 dashed;
+}
+
+.item {
+    	color: #000;
+	background-color: #c8dd80;
+	border: 1px solid #98c012;
+        margin: 5px;
+        margin-right: 15px;
+        margin-top: 0px;
+        padding: 0px;
+}
+
+.itema {
+        display: block;
+        text-decoration: none;
+        color: black;
+        padding: 5px;
+}
+
+.itema:hover {
+        background-color: transparent;
+}
+
+.filename {
+        display: block;
+        text-decoration: underline;
+        font-weight: bold;
+        color: #004000;
+}
+
+.link {
+        display: block;
+        text-decoration: underline;
+        font-weight: bold;
+        color: #0040F0;
+}
+
+.item:hover {
+    	color: #000;
+	background-color: #D0FFE5;
+	border: 1px solid #002000;
+        margin: 5px;
+}
+
+.topleft {
+	float: left;
+}
+
+.topright {
+        float: right;
+}
+
+div.center {
+        text-align: center;
+}
+
+table.choice {
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+        border: 1px solid;
+}
+
+td.choice {
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border: 1px solid;
+}
+
+table.cvmain {
+        margin-top: 3em;
+        margin-left: auto;
+        margin-right: auto;
+        border: 0;
+}
+
+td.sect {
+        color : black;
+        background-color: #D0EFD0;
+        font-size: 1.5em;
+        border: 1px dashed #A0D0B0;
+        padding: .4ex;
+}
+
+.cvitem {
+    	color: #003000;
+        width: 14ex;
+        text-align: right;
+        margin-top: 1em;
+/*        border-bottom: 1px solid #004000;
+        border-top:    1px solid #004000;*/
+        font-weight: bold;
+/*        font-size: 1.2em; */
+}
+
+.position {
+        margin-top: 1em;
+/*        border-bottom: 1px solid #004000;
+        border-top:    1px solid #004000;*/
+        color : black;
+        font-weight: bold;
+/*        font-size: 1.2em; */
+        font-style:italic;
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+<h2 align="center">Rapport du projet UNIX</h2>
+Le projet contient deux scripts shell principaux :
+<br>
+	<h4>galerie_shell.sh</h4> => Le script executable qui s'occupe de la récupération des arguments pour la fonction
+	main et de l'interface avec l'utilisateur (arguments corrects, ou pas et help).
+<br>
+	<h4>utilities.sh</h4> => Contient la fonction main ainsi que toutes ses fonctions annexes. Lors de son appelle par galerie_shell, les vignettes seront générées ainsi que les pages html nécessaires à la galerie. Des commentaires sont présents sur le code pour plus de clarté.
+<h2> Les tests </h2>
+Dans le répértoire tests se trouvent plusieurs exécutables permettant de tester le programme dans des situations variées. <br>
+NB. Pour l'exécution des tests, aucun argument n'est attendu. Ne pas les sortir du répertoire tests. Simplement utiliser ./exemple.sh . La galerie et le vignettes seront générées dans tests/source/ .
+<br><br>
+	<b>simple_v2.sh:</b><br> Teste simplement la génération de la galerie avec 2 images situées dans un fichier source <br>
+	<b>verbose.sh:</b> <br>Teste le mode verbose. (Gmic perturbe légèrement notre mode verbose car il se mélange aux affichages de celui-ci).
+	Nous avons cependant décidé de conserver un affichage "au fur et à mesure" de l'exécution plutôt que d'utiliser une redirection et cat le fichier texte. <br>
+	<b>index.sh:</b><br> Teste avec le mode index et change le nom du fichier html destination en "nouveau_nom.html"<br>
+	<b>force_desactive.sh:</b> <br>Teste la création d'une galerie d'image à partir de vignettes déjà créees auparavant.
+	Affiche ensuite la date de dernière modification des vignettes pour constater qu'elles n'ont pas été re-générées.<br>
+	<b>force_active.sh:</b><br> Teste la création d'une galerie à partir de vignettes déjà créees dans le répertoire destination.
+	Affiche ensuite la date de dernière modification des vignettes dans le terminal pour constater la génération de celles-ci.<br>
+	<b>rep_source_charge.sh:</b><br> Teste la création d'une galerie à partir d'un fichier source ne contenant pas uniquement
+	 des fichiers images <br>
+	<b>ouverture_auto.sh:</b><br> Teste la génération de la galerie et ouvre la galerie html ainsi créee dans firefox
+	 automatiquement <br>
+	<b>temps_exec.sh:</b> <br>Teste l'argument -n en montrant le temps gagné entre une exécution en parallèle sur 4 coeurs et le temps d'une exécution normale. <br>
+ 	<b>all_arguments.sh:</b> <br> une galerie en prenant en compte les 3 arguments imposés à savoir force, verbose et index.
+ 	Cela permet de montrer le bon fonctionnement des 3 arguments et de montrer que galerie_shell gère bien les arguments.<br>
+<h2> Extensions implantées </h2>
+-Ajout de la légende (date de creation et nom) dans la galerie.<br>
+-Page html individuelle pour chaque image constituant la galerie accessible par clique sur la vignette et menu déroulant.<br>
+-Ajout d'un paramètre optionnel -o ou --open qui ouvre automatiquement avec firefox la galerie à la fin de l'exécution.<br>
+-Ajout d'un paramètre optionnel -n X, X étant le nombre de coeur du processeur (ce mode est activé pour X=4 par défaut,
+ utiliser X=1 pour le desactiver) pour une génération en parallèle des vignettes avec xargs.<br>
+-Ajout d'un style défini dans le head du HTML qui s'inspire des exemples fournis.<br>
+-Ajout du logo HTML5 mais le lien ne marche pas car la page n'est pas herbergée. Cependant celle-ci passe le test avec succès.
+<h2> ShellCheck </h2>
+Pour les deux scripts principaux ainsi que pour les scripts de test, shellcheck indique "No Issues".
+<h2>  Gestionnaire de version Git </h2>
+Premier pas avec git donc quelques erreurs au départ mais nous nous sommes bien adapté et la commande "git status"
+indique "On branch master, nothing to commit, working tree clean".<br>
+<h2 > Limites du rendu </h2>
+Nous avons été confronté à deux problèmes particuliers:<br>
+-Les espaces dans le nom des vignettes entraine un problème du nombre d'argument de xargs pour la création de vignette
+en parallèle.<br>
+-Une limite au niveau de l'enchainement des arguments, par exemple comment faire si l'utilisateur veut changer le nom de
+la galerie par un nom d'argument.<br>
+Par exemple ./galerie_shell -s source -d dest -i -f -o . Faut-il écrire dans -f.html ou exécuter l'option -f?
+</body>
+</html>
